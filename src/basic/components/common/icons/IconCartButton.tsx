@@ -3,14 +3,10 @@ import { IconType } from "./type";
 export const IconCartButton = ({
   className = "w-6 h-6 text-gray-700",
   strokeWidth = 2,
+  stroke = "currentColor",
 }: IconType) => {
   return (
-    <svg
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
+    <svg className={className} fill="none" stroke={stroke} viewBox="0 0 24 24">
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
