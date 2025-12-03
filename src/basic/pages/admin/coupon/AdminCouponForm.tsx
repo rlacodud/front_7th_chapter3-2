@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Coupon } from "../../../../types";
 import { Button } from "../../../components/common/ui/Button";
 import { InputField } from "../../../components/common/ui/InputField";
-import { addCoupon, validateCouponForm } from "../../../models/coupon";
-import { isValidCouponCode, extractNumbers } from "../../../utils/validators";
+import { addCoupon } from "../../../models/coupon";
+import { extractNumbers } from "../../../utils/validators";
 
 interface AdminCouponFormProps {
   coupons: Coupon[];

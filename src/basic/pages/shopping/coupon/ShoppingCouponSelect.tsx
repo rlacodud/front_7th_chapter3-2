@@ -1,6 +1,5 @@
 import { CartItem, Coupon } from "../../../../types";
 import { Button } from "../../../components/common/ui/Button";
-import { calculateCartTotal } from "../../../models/cart";
 import {
   validateCoupon,
   calculateTotalBeforeCoupon,

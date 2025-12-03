@@ -2,8 +2,7 @@ import { Discount } from "../../../../types";
 import { IconClose } from "../../../components/common/icons/IconClose";
 import { Button } from "../../../components/common/ui/Button";
 import { InputField } from "../../../components/common/ui/InputField";
-import { isValidDiscountRate, isValidDiscountQuantity, extractNumbers } from "../../../utils/validators";
-import { formatDiscountRate } from "../../../utils/formatters";
+import { isValidDiscountRate, isValidDiscountQuantity } from "../../../utils/validators";
 
 interface AdminProductDiscount {
   index: number;

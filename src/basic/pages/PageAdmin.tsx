@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { ADMIN_TABS, AdminTab, ADMIN_TAB_CONFIGS } from "./admin/constants/tabs";
+import { ADMIN_TABS, AdminTab } from "./admin/constants/tabs";
 import { AdminNav } from "./admin/AdminNav";
 import { AdminProducts } from "./admin/product/AdminProduct";
 import { AdminCoupon } from "./admin/coupon/AdminCoupon";
