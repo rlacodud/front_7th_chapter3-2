@@ -28,6 +28,7 @@ export const AdminProducts = ({
     stock: 0,
     description: "",
     discounts: [] as Array<{ quantity: number; rate: number }>,
+    isRecommended: false,
   });
 
   const handleAddProduct = () => {
@@ -38,6 +39,7 @@ export const AdminProducts = ({
       stock: 0,
       description: "",
       discounts: [],
+      isRecommended: false,
     });
     setShowProductForm(true);
   };

@@ -13,6 +13,7 @@ interface AdminProductTableProps {
     stock: number;
     description: string;
     discounts: Discount[];
+    isRecommended: boolean;
   }) => void;
   setShowProductForm: (show: boolean) => void;
   handleNotificationAdd: (
@@ -38,6 +39,7 @@ export const AdminProductTable = ({
       stock: product.stock,
       description: product.description || "",
       discounts: product.discounts || [],
+      isRecommended: product.isRecommended || false,
     });
     setShowProductForm(true);
   };

@@ -12,6 +12,7 @@ interface AdminProductFormProps {
     stock: number;
     description: string;
     discounts: Discount[];
+    isRecommended: boolean;
   };
   setProducts: React.Dispatch<React.SetStateAction<ProductWithUI[]>>;
   setProductForm: (product: {
@@ -20,6 +21,7 @@ interface AdminProductFormProps {
     stock: number;
     description: string;
     discounts: Discount[];
+    isRecommended: boolean;
   }) => void;
   setShowProductForm: (show: boolean) => void;
   setEditingProduct: (productId: string | null) => void;
@@ -129,6 +131,13 @@ export const AdminProductForm = ({
     handleNotificationAdd("상품이 수정되었습니다.", "success");
   };
 
+  const handleRecommendedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setProductForm({
+      ...productForm,
+      isRecommended: e.target.checked,
+    });
+  };
+
   const handleCancelForm = () => {
     setEditingProduct(null);
     setProductForm({
@@ -137,6 +146,7 @@ export const AdminProductForm = ({
       stock: 0,
       description: "",
       discounts: [],
+      isRecommended: false,
     });
     setShowProductForm(false);
   };
@@ -158,6 +168,7 @@ export const AdminProductForm = ({
       stock: 0,
       description: "",
       discounts: [],
+      isRecommended: false,
     });
     setEditingProduct(null);
     setShowProductForm(false);
@@ -202,6 +213,13 @@ export const AdminProductForm = ({
             required
           />
         </div>
+        <InputField
+          type="checkbox"
+          id="isRecommended"
+          label="추천 상품으로 설정"
+          value={productForm.isRecommended}
+          onChange={handleRecommendedChange}
+        />
         <div className="mt-4">
           <label className="block text-sm font-medium text-gray-700 mb-2">
             할인 정책

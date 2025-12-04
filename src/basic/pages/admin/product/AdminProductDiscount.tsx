@@ -13,6 +13,7 @@ interface AdminProductDiscount {
     stock: number;
     description: string;
     discounts: Discount[];
+    isRecommended: boolean;
   };
   setProductForm: (product: {
     name: string;
@@ -20,6 +21,7 @@ interface AdminProductDiscount {
     stock: number;
     description: string;
     discounts: Discount[];
+    isRecommended: boolean;
   }) => void;
 }
 
