@@ -4,9 +4,9 @@ import {
   InputHTMLAttributes,
 } from "react";
 
-interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'onBlur'> {
   label?: string;
-  value: string | number;
+  value?: string | number | boolean;
   placeholder?: string;
   required?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
@@ -26,14 +26,18 @@ export const InputField = ({
   className = "",
   ...props
 }: InputFieldProps) => {
-  const baseInputClassName =
-    "w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-3 py-2 border";
+  const isCheckbox = type === "checkbox";
+  
+  const baseInputClassName = isCheckbox
+    ? "w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+    : "w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 px-3 py-2 border";
   const inputClassName = `${baseInputClassName} ${className}`.trim();
 
   const inputElement = (
     <input
       type={type}
-      value={value}
+      value={isCheckbox ? undefined : (value as string | number | undefined)}
+      checked={isCheckbox ? (value as boolean | undefined) : undefined}
       onChange={onChange}
       onBlur={onBlur}
       placeholder={placeholder}
@@ -44,6 +48,19 @@ export const InputField = ({
   );
 
   if (label) {
+    if (isCheckbox) {
+      return (
+        <div className="flex items-center gap-2">
+          {inputElement}
+          <label
+            htmlFor={props.id}
+            className="text-sm font-medium text-gray-700 cursor-pointer"
+          >
+            {label}
+          </label>
+        </div>
+      );
+    }
     return (
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
